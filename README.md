@@ -59,8 +59,8 @@ An Instagram-like social media application that allows users to share photos, vi
 - **Authentication:** Firebase/Auth0
 
 ### Frontend:
-- **Languages:** XML and Kotlin
-- **Framework:** Android Native  (if cross-platform)
+- **Languages:** HTML, CSS, JavaScript
+- **Framework:** React/Flutter (if cross-platform), Android Native (XML, Kotlin)
 
 ### Additional Tools:
 - **APIs:** Google Maps API (for location tagging), Cloudinary (for media storage)
@@ -119,7 +119,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 
 For any inquiries, reach out at:
-- **Email:** your.email@example.com
+- **Email:** paknasirakram@email.com
 - **GitHub:** [yourusername](https://github.com/NasirAkra)
 
 ---
