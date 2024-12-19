@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyInstagram</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="email">Email</string>
+    <string name="already_have_an_account_login">Already Have An Account Login?</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+</resources>
