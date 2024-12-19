@@ -120,7 +120,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any inquiries, reach out at:
 - **Email:** paknasirakram@email.com
-- **GitHub:** [yourusername](https://github.com/NasirAkra)
+- **GitHub:** [NasirAkra](https://github.com/NasirAkra)
 
 ---
 
