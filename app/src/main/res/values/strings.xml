@@ -10,4 +10,10 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add">add</string>
+    <string name="profile">Profile</string>
+    <string name="reel">Reel</string>
+    <string name="search">Search</string>
 </resources>

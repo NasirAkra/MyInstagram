@@ -13,7 +13,7 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginTop="136dp"
-        android:src="@drawable/gram"
+        android:src="@drawable/instagram"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
