@@ -2,7 +2,6 @@
 
 package com.brain.myinstagramworld
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
@@ -38,7 +37,6 @@ class SignUpActivity : AppCompatActivity() {
 
         }
     }
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -50,17 +48,17 @@ class SignUpActivity : AppCompatActivity() {
         {
             if (intent.getIntExtra("MODE",-1)==1)
             {
-                binding.register.text=" Update Profile"
+                binding.register.text="Update Profile"
                 Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
                     .addOnSuccessListener {
-
-                        user = it.toObject<User>()!!
-
-
+                     val   user :User=it.toObject<User>()!!
                         if(!user.image.isNullOrEmpty())
                         {
                             Picasso.get().load(user.image).into(binding.profileImage)
                         }
+                        binding.name.editText?.setText(user.name)
+                        binding.password.editText?.setText(user.password)
+                        binding.email.editText?.setText(user.email)
 
 
 
@@ -78,13 +76,8 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.register.setOnClickListener {
-
-
-
-            if (intent.hasExtra("MODE"))
-            {
-                if (intent.getIntExtra("MODE",-1)==1)
-                {
+            if (intent.hasExtra("MODE")) {
+                if (intent.getIntExtra("MODE", -1) == 1) {
                     Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).set(user)
                         .addOnCompleteListener {
                             startActivity(Intent(this,HomeActivity::class.java))
@@ -92,47 +85,61 @@ class SignUpActivity : AppCompatActivity() {
 
 
                         }
+
+
+
                 }
             }
-            else {
-                val name = binding.name.editText?.text.toString().trim()
-                val email = binding.email.editText?.text.toString().trim()
-                val password = binding.password.editText?.text.toString().trim()
+            else{
 
 
-                if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(this, "Please fill in all the information", Toast.LENGTH_SHORT)
-                        .show()
 
-                } else {
+            val name = binding.name.editText?.text.toString().trim()
+            val email = binding.email.editText?.text.toString().trim()
+            val password = binding.password.editText?.text.toString().trim()
+            if (intent.hasExtra("MODE"))
+            {
+                if (intent.getIntExtra("MODE",-1)==1)
+                {
+                    Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).set(user)
 
-
-                    // Create user with Firebase
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { result ->
-                            if (result.isSuccessful) {
-                                user.name = name
-                                user.password = password
-                                user.email = email
-                                Firebase.firestore.collection(USER_NODE)
-                                    .document(Firebase.auth.currentUser!!.uid).set(user)
-                                    .addOnCompleteListener {
-                                        startActivity(Intent(this, HomeActivity::class.java))
-                                        finish()
+                }
+            }
 
 
-                                    }
 
-                            } else {
-                                Toast.makeText(
-                                    this,
-                                    result.exception?.localizedMessage,
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please fill in all the information", Toast.LENGTH_SHORT).show()
+
+            }
+            else
+            {
+
+
+
+            // Create user with Firebase
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { result ->
+                    if (result.isSuccessful) {
+                       user.name=name
+                       user.password=password
+                       user.email=email
+                        Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).set(user)
+                            .addOnCompleteListener {
+                                startActivity(Intent(this,HomeActivity::class.java))
+                                finish()
+
+
                         }
+
+                    } else {
+                        Toast.makeText(this, result.exception?.localizedMessage, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
     }
+    }
+
 }
