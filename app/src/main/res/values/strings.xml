@@ -16,4 +16,7 @@
     <string name="profile">Profile</string>
     <string name="reel">Reel</string>
     <string name="search">Search</string>
+    <string name="bio">Bio</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="name2">Name</string>
 </resources>

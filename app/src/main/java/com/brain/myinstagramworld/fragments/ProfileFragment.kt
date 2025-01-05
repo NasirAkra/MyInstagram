@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.brain.myinstagramworld.adapters.ViewPagerAdapter
 import com.brain.myinstagramworld.Model.User
+import com.brain.myinstagramworld.MyReelFragment
 import com.brain.myinstagramworld.SignUpActivity
 import com.brain.myinstagramworld.databinding.FragmentProfileBinding
 import com.brain.myinstagramworld.utils.USER_NODE
@@ -18,6 +20,9 @@ import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
+
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +36,11 @@ class ProfileFragment : Fragment() {
           activity?.startActivity(intent)
           activity?.finish()
       }
-
+        viewPagerAdapter =ViewPagerAdapter(requireActivity().supportFragmentManager)
+        viewPagerAdapter.addfragments(MyPostFragment(),"My Post")
+        viewPagerAdapter.addfragments(MyReelFragment(),"My Reels")
+        binding.viewPager.adapter=viewPagerAdapter
+        binding.tab.setupWithViewPager(binding.viewPager)
 
         return  binding.root
 
